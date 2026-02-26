@@ -78,7 +78,7 @@ do
 
                 if not equipment then return end
 
-                local weapon_type = equipment:call('get_CurrentWeaponType()')
+                local weapon_type = equipment:get_field('<EquipType>k__BackingField')
 
                 if ALLOWED_WEAPON_TYPE:has(weapon_type) then
                     local damage_info = to_managed(args[3]) -- app.Collision.HitController.DamageInfo
