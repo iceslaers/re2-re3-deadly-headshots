@@ -38,6 +38,20 @@ Only true ballistic firearms trigger instant headshot kills.
 
 ---
 
+## Installation
+
+1. Install REFramework:
+   https://github.com/praydog/REFramework
+
+2. Download this mod archive.
+
+3. Extract the archive directly into your game directory  
+   (the folder where the game .exe file is located).
+
+4. Launch the game.
+
+Make sure REFramework is properly installed before using this mod.
+
 ## Head Explosion Behavior
 
 Head explosion chance is unchanged.
