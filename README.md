@@ -1,6 +1,31 @@
 # True Headshot – Canonical Zombie Kill Overhaul
 ### Resident Evil 2 Remake
-*(RE3R support planned | RE9: Requiem supported)*
+### Resident Evil Requiem
+*(RE3R support planned )*
+
+---
+
+## Overview
+
+This mod restores classic zombie apocalypse rules inspired by traditional zombie canon and George A. Romero films.
+
+If the brain is destroyed — the enemy dies.
+
+A single clean headshot will instantly kill:
+
+- Standard Zombies
+- Zombie Dogs
+- Lickers
+
+Supported weapon types:
+
+- Pistols
+- Shotguns
+- Submachine Guns
+- Magnums
+- Minigun
+
+Only true ballistic firearms trigger instant headshot kills.
 
 ---
 
@@ -55,29 +80,7 @@ This ensures the mechanic does not reduce the overall challenge and keeps the su
 
 ---
 
-## Overview
 
-This mod restores classic zombie apocalypse rules inspired by traditional zombie canon and George A. Romero films.
-
-If the brain is destroyed — the enemy dies.
-
-A single clean headshot will instantly kill:
-
-- Standard Zombies
-- Zombie Dogs
-- Lickers
-
-Supported weapon types:
-
-- Pistols
-- Shotguns
-- Submachine Guns
-- Magnums
-- Minigun
-
-Only true ballistic firearms trigger instant headshot kills.
-
----
 
 ## Installation
 
@@ -90,6 +93,8 @@ Only true ballistic firearms trigger instant headshot kills.
    (the folder where the game .exe file is located).
 
 4. Launch the game.
+
+5. For RE9 download REFramework from this https://github.com/praydog/REFramework-nightly/releases
 
 Make sure REFramework is properly installed before using this mod.
 
