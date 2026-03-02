@@ -11,6 +11,12 @@ local head_body_parts_set = Set:new({
 
 local zombie_prefix_name = 'cp_B0'
 
+local excluded_zombie_types = Set:new({
+    'cp_B002'
+})
+
+local excluded_zombie_types_table = excluded_zombie_types:toTable()
+
 local is_headshot_in_context = false
 
 -- Zombies
@@ -50,7 +56,6 @@ do
         log.debug('update_damage not exists')
         return
     end
-
 
     sdk.hook(
         request_morhp_pop_head_method,
@@ -118,9 +123,21 @@ do
             local is_enemy_basic_zombie = enemy_name:match(zombie_prefix_name)
             local is_not_morphed = not enemy_name:find(moprh_postfix, 1)
 
+            local is_excluded = false
+
+            for zombie_type in pairs(excluded_zombie_types_table)
+            do
+                if enemy_name:find(zombie_type, 1)
+                then
+                    is_excluded = true
+                end
+            end
+
             if head_body_parts_set:has(body_parts)
                 and is_enemy_basic_zombie
                 and is_not_morphed
+                and not excluded_zombie_types:has()
+                and not is_excluded
             then
                 is_headshot_in_context = true
             end
