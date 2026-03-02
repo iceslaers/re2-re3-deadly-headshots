@@ -20,7 +20,22 @@ local is_headshot_in_context = false
 
 -- cp_D100 Mr Gideon
 
+local moprh_postfix = 'morphed'
+
 do
+    local zm_updater_type = sdk.find_type_definition('app.Cp_B000Updater')
+
+    if zm_updater_type == nil then
+        log.debug('NOT ZM_UPDATER')
+    end
+
+    local request_morhp_pop_head_method = zm_updater_type:get_method('requestPopMorphHead')
+
+    if request_morhp_pop_head_method == nil then
+        log.debug('morph head method not finded')
+        return
+    end
+
     local hit_manager_singleton = sdk.get_managed_singleton('app.HitManager')
     if hit_manager_singleton == nil then
         log.debug('HitManager not exists')
@@ -36,13 +51,41 @@ do
         return
     end
 
+
+    sdk.hook(
+        request_morhp_pop_head_method,
+        function(args)
+            local zm_updater = sdk.to_managed_object(args[2])
+
+
+            local hit_controller = sdk.to_managed_object(zm_updater:get_field('<HitController>k__BackingField'))
+
+
+            if hit_controller == nil then
+                log.debug('no hit controller')
+                return
+            end
+
+            local game_object = zm_updater:call('get_GameObject()')
+
+            if game_object == nil then
+                log.debug('no game object')
+                return
+            end
+
+            local enemy_name = game_object:call('get_Name()')
+
+            game_object:call('set_Name(System.String)', enemy_name .. '_' .. moprh_postfix)
+        end,
+        function(retval) return retval end
+    )
+
     sdk.hook(
         update_damage_method,
         function(args)
             local hit_info = sdk.to_managed_object(args[3])
             local damage_user_data = sdk.to_managed_object(hit_info:get_field('<DamageUserData>k__BackingField'))
             local attack_data = sdk.to_managed_object(hit_info:get_field('<AttackData>k__BackingField'))
-
 
             if args[4] == nil then
                 log.debug('args4 is null')
@@ -73,8 +116,12 @@ do
             local enemy_name = attack_owner:call('get_Name()')
 
             local is_enemy_basic_zombie = enemy_name:match(zombie_prefix_name)
+            local is_not_morphed = not enemy_name:find(moprh_postfix, 1)
 
-            if head_body_parts_set:has(body_parts) and is_enemy_basic_zombie then
+            if head_body_parts_set:has(body_parts)
+                and is_enemy_basic_zombie
+                and is_not_morphed
+            then
                 is_headshot_in_context = true
             end
         end,
