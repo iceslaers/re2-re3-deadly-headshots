@@ -84,10 +84,11 @@ This ensures the mechanic does not reduce the overall challenge and keeps the su
 
 ## Installation
 
+
 1. Install REFramework:
    https://github.com/praydog/REFramework
 
-2. Download this mod archive.
+2. Download this mod archive from https://www.nexusmods.com/residentevilrequiem/mods/47
 
 3. Extract the archive directly into your game directory  
    (the folder where the game .exe file is located).
