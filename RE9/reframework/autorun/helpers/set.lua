@@ -22,4 +22,12 @@ function Set:has(value)
     return self[value] ~= nil
 end
 
+function Set:toTable()
+    local t = {}
+    for k in pairs(self) do
+        t[k] = true
+    end
+    return t
+end
+
 return Set
