@@ -17,7 +17,7 @@ local excluded_zombie_types = Set:new({
 
 local excluded_zombie_types_table = excluded_zombie_types:toTable()
 
-local is_headshot_in_context = false
+local headshot_context = nil
 
 -- Zombies
 -- cp_B070
@@ -139,7 +139,7 @@ do
                 and not excluded_zombie_types:has()
                 and not is_excluded
             then
-                is_headshot_in_context = true
+                headshot_context = sdk.get_thread_context()
             end
         end,
         function(retval)
@@ -150,11 +150,13 @@ do
     sdk.hook(calc_damage_dir_method,
         function(args)
             local damage_info = sdk.to_managed_object(args[3])
+            local thread_context = sdk:get_thread_context()
 
-            if is_headshot_in_context then
+            if headshot_context == thread_context then
+                log.debug('HEADSHOT CONTEXT ' .. tostring(headshot_context))
+                log.debug('CURRENT CONTEXT ' .. tostring(thread_context))
                 damage_info:set_field('<Damage>k__BackingField', 999999)
             end
-            is_headshot_in_context = false
         end,
         function(retval)
             return retval
