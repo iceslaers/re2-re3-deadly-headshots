@@ -3,6 +3,7 @@ local Set = require('helpers.set')
 local sdk = api.sdk
 
 local HEAD_BODY_PART = 1
+local ATTACK_SHOT_TYPE = 2
 
 local enemy_types = Set:new({
     'cp_B000',
@@ -39,7 +40,9 @@ sdk.hook(
         local enemy_context = sdk.to_managed_object(enemy_attack_damage_driver:call('get_Context()'))
 
         local damage_info = sdk.to_managed_object(args[3])
+        local attack_data = sdk.to_managed_object(damage_info:get_field('<AttackData>k__BackingField'))
         local damage_user_data = sdk.to_managed_object(damage_info:get_field('<DamageUserData>k__BackingField'))
+        local attack_type = attack_data:get_field('_AttackType')
         local body_part = damage_user_data:get_field('_BodyParts')
         ---@type REManagedObject
         local character_kind_id = enemy_context:call('get_KindID()')
@@ -55,6 +58,7 @@ sdk.hook(
         if not is_morphed
             and body_part == HEAD_BODY_PART
             and enemy_types:has(character_kind_name)
+            and attack_type == ATTACK_SHOT_TYPE
         then
             damage_info:set_field('<Damage>k__BackingField', 99999)
         end
