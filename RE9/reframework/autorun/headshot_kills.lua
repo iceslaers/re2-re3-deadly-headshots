@@ -21,7 +21,8 @@ local enemy_types = Set:new({
     'cp_B053',
     'cp_B054',
     'cp_B060',
-    'cp_B070'
+    'cp_B070',
+    'cp_C600'
 })
 
 
