@@ -19,7 +19,7 @@ local KILL_DAMAGE = 999999
 -- tyrant stalker 10
 -- tyrant bossfight 11
 -- birkin in ending 17
-local ALLOWED_KIND_ID_SET = Set:new({ 0, 1, 2, 3, 4, 21, 24 })
+local ALLOWED_KIND_ID_SET = Set:new({ 0, 1, 2, 21, 24 })
 local ALLOWED_WEAPON_TYPE = Set:new({
     1,   -- Matilda
     2,   -- M19
