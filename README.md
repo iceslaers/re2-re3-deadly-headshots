@@ -110,4 +110,4 @@ This implementation was rebuilt to improve stability and ensure functionality ac
 
 Planned updates:
 
-- Make additional modules, for make game harder and interesting with current mod.
+- Make additional modules, for make game harder and interesting with current mod. In all resident evil games(RE2,RE3,RE9)
