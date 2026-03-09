@@ -35,7 +35,7 @@ https://github.com/praydog/REFramework
 
 Tested on the RT version.  
 
-UPD 09.03.2026: Work in non-rt version(RE2)
+UPD 09.03.2026: It's work in non-rt version(RE2)
 
 ---
 
