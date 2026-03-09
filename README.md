@@ -105,6 +105,16 @@ https://www.nexusmods.com/residentevil22019/mods/495
 This implementation was rebuilt to improve stability and ensure functionality across gameplay scenarios.
 
 ---
+## Credits / Acknowledgements
+This mod makes use of type definitions and API structures from the following resource:
+
+https://www.nexusmods.com/residentevil22019/mods/1481
+
+These definitions made it much easier to work with the game's systems during development.
+
+During early development, the API was downloaded locally for convenience and its type definitions were included in this repository and release archive as part of the development environment.
+
+Many thanks to the author for providing this helpful resource to the modding community.
 
 ## Roadmap
 
